@@ -1,0 +1,1183 @@
+\documentclass[9pt]{ltjsarticle}
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+\newcommand{\bbold}{\mathbbold}
+\usepackage{xcolor}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{enumitem}
+\usepackage{ashiato45}
+%\usepackage{okumacro}
+\def\MARU#1{\textcircled{\scriptsize #1}}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{here}
+%\usepackage[twoside]{geometry}
+\usepackage{mytheorems}
+\usepackage{tikz}
+\usepackage{ascmac}
+\usetikzlibrary{cd}
+\title{Bochnak - Real Algebraic Geometry}
+\author{ashiato45 take notes}
+
+\renewcommand{\bf}{\mathbf}
+
+
+\begin{document}
+\maketitle
+
+\section{Ordered Fields, Real Closed Fields}
+\label{sec:Ordered Fields, Real Closed Fields}
+\subsection{Ordered Fields, Real Fields}
+\label{sub:Ordered Fields, Real Fields}
+\begin{itemize}
+  \item (Definition 1.1.1, ordering of a field):
+  $\le$ is an ordering of a field $F$
+  $\iff$
+  \begin{enumerate}
+    \item (total): $\le$ is a total.
+    \item (addition): $x\le y \implies x+z \le y+z$
+    \item (non-negative and mult.): $0\le x,\, 0\le y\implies 0\le xy$.
+  \end{enumerate}
+  \item (Small prop.):
+  $x\le y,\, z\ge 0 \implies xz\le yz$. \pf
+  $x\le y \iff 0\le y-x \iff 0\le (y-x)z \le 0\le yz-xz \iff xz \le yz$.
+  \item
+  Let's define a ordering of the field of rational function $\R(X)$.
+  (Think $X$ as "infinite small").
+  \item
+  (Example 1.1.2):
+  There exists the unique ordering of $\R (X)$ satisfying
+  \begin{itemize}
+    \item it preserves the ordering of $\R$.\footnote{
+    This come from the axiom of fields.
+    Or, for $a\in \R$, $0 < X < a$.
+    }
+    \item $X$ is smaller than any positive real number.
+    \item $X$ is positive.
+  \end{itemize}
+  \pf
+  We prove the ordering is unique if any first.
+  Let $\FC(f)$ is the coefficient of the lowest term of $f$ for $f \in \R[X]$.
+  (FC stands for Following Coefficient twinned with Leading Coefficient)
+  Let $\R [X]^+ = \set{f\in \R [X]; \FC()}$
+  \begin{enumerate}
+    \item
+    $0<X$ \pf Requirement.
+    \item
+    $\Forall{a>0} X<a$ \pf Requirement.
+    \item
+    $\le$ preserves the ordering of $\R$. \pf Requirement.
+    \item
+    $\Forall{a>0} \Forall{n\ge 0}X^{n+1} < aX^{n}$
+    \item
+    $\Forall{a>0}\Forall{m>n\ge 0} X^m < aX^n$
+    \item
+    $\Forall{a>0,b\in \R}\Forall{m>n\ge 0} bX^m < aX^n$
+    \item
+    $\Forall{a>0,b\in \R}\Forall{m>n\ge 0} 0<bX^m + aX^n$
+    \item
+    $\Forall{P(X) \in \R [X]^+} 0 < P(X)$
+    \item
+    $\Forall{Q(X)\in \R [X]^+} 0 < \frac{1}{Q(X)}$
+    \pf
+    think of
+    \begin{align}
+      Q'(X) =
+      \begin{cases}
+        1/Q^2 ; Q>0
+        (-1/Q)^2; Q<0
+      \end{cases}.
+    \end{align}
+    Or assume $0 \ge 1/Q$.  Then multiplying $Q$, $0\ge 1$.
+    This contradicts to the axiom of fields.
+    \item
+    $\Forall{P(X),Q(X)\in \R [X]^+} 0 < \frac{P(X)}{Q(X)}$
+    \item
+    $\Forall{P(X)\in \R [X]^-,Q(X)\in \R [X]^+} \frac{P(X)}{Q(X)} < 0$
+    \item
+    \begin{align}
+    \Forall{P(X),R(X)\in \R [X], Q(X),S(X)\in \R [X]^+}
+    \begin{cases}
+      \FC(PS-RQ)>0 &\rightarrow \frac{P}{Q} > \frac{R}{S}\\
+      \FC(PS-RQ)=0 &\rightarrow \frac{P}{Q} = \frac{R}{S}\\
+      \FC(PS-RQ)<0 & \rightarrow \frac{P}{Q} < \frac{R}{S}
+    \end{cases}.
+    \end{align}
+  \end{enumerate}
+  This requirement defines a binary relation $\le$ (check the sign of FC of the numerator\footnote{denominator:分母、numerator:分子}).
+  We prove it is exactly an ordering.
+  \begin{itemize}
+    \item (Reflexivity): Obvious.
+    \item (Anti-symmetry): Obvious.
+    \item (Total): Obvious.
+    \item (Non-negative and mult.):
+    Assume $\frac{P}{Q}\ge 0$ and $\frac{R}{S}\ge 0$.
+    $\FC(P) \ge 0$ and $\FC(R) \ge 0$ hold.
+    Paying attention to managing lowest terms, $\FC(PR)=\FC(P)\FC(R)\ge0$.
+    This means $\frac{PR}{QS} \ge 0$.
+    \item (Transitivity):
+    Assume $\frac{P}{Q}\le \frac{R}{S}$,$\frac{R}{S} \le \frac{T}{U}$ and
+    $Q,S,U\in \R [X]^+$.
+    By (Non-negative and mult.), they are equivalent to
+    $PSU\le RQU$ and $RQU\le TQS$.
+    We write for a polynomial $f$ $f$'s $n$-th coeffficient $f_n$.
+    For a pair of polynomials $(f,g)$, let $\varphi(f,g)$  is an $n$
+    such that $f_0 = g_0,\dots, f_{n-1}=g_{n-1},\, f_n \neq g_n$.
+    (If $f=g$, let $\varphi(f,g)=\infty$.)
+    $\varphi(PSU,TQS)=\min(\varphi(PSU,RQU), \varphi(RQU,TQS))$ holds.
+    Let $N=\varphi(PSU,TQS)$.
+    \begin{itemize}
+      \item If $N=\infty$ then $\varphi(PSU,RQU)=\varphi(RQU,TQS)=\infty$.
+      This means $PSU=RQU=TQS$.
+      \item If $N<\infty$ then $(PSU)_0=(RQU)_0=(TQS)_0,\dots,(PSU)_{N-1}=(RQU)_{N-1}=(TQS)_{N-1}$ holds.
+      Moreover, $(PSU)_N \le (RQU)_N$ and $(RQU)_N \le (TQS)_N$ hold.
+      This means $PSU \le TQS$.
+    \end{itemize}
+    \item (Addition):
+    Obvious.
+  \end{itemize}
+  \item
+  Define $\le$ of $\R (X)$ as
+  \begin{enumerate}
+    \item
+    \begin{align}
+      [a_k X^k + \dots + a_n X^n \ge 0 ,\, a_k \neq 0,\, k\le n]
+      \iff
+      [a_k > 0]
+    \end{align}
+    \item
+    \begin{align}
+        [P(X)/Q(X) > 0] \iff [P(X)Q(X)>0]
+    \end{align}
+  \end{enumerate}
+  \item
+  This implies immediately
+  \begin{align}
+    \dots < X^2 < X < 1 < X^{-1} < X^{-2} < \dots .
+  \end{align}
+  \item (Small prop.): These two rules generates an ordering of a field (Def. 1.1.1).
+  \pf TODO.
+  \item (Small prop.):
+  $\R (X)$ is not archimedean \footnote{Accumulating $1_{\R (X)}$ finitely overwhelms any fixed element of $\R (X)$} i.e.
+  \begin{align}
+    \Exists{P(X)\in \R (X)} \Forall{n\in \N} n < P(X).
+  \end{align}
+  \pf Take $P(X)=1/X$.  Fix $n\in \N$. $X<1/n$ holds.
+  \begin{align}
+    X < \frac{1}{n}
+    &\iff
+    \frac{1}{n}-X > 0 \\
+    &\iff
+    \frac{1-nX}{n}>0\\
+    &\iff
+    1-nX > 0\\
+    &\iff
+    \frac{1}{X}-n > 0\\
+    &\iff
+    \frac{1}{X} > n.
+  \end{align}
+  \item
+  This implies $1/X$ is "infinitely large", and
+  $X$ is "infinitely small".
+  \item
+  (Definition, cut):
+  (This is probably not the normal definiton...)
+  A pair of subsets of $\R$ $(I,J)$ is a cut $\iff$
+  \begin{itemize}
+    \item $I\cap J = \emptyset$
+    \item $I\cup J = \R$
+    \item $I < J$ i.e. $\Forall{i\in I}\Forall{j\in J} i < j$.
+  \end{itemize}
+  \item
+  An ordering of $\R (X)$ deterimnes a cut $(I,J)$ where
+  \begin{align}
+    I=\set{x\in \R; x < X},\, J = \set{x\in \R; X < x}.
+  \end{align}
+  \begin{align}
+    (\text{an ordering of $\R (X)$}) \squig
+    (\text{a cut of $\R$})
+  \end{align}
+  Pay attention to forall $x\in \R$ either $x<X$ or $X<x$ holds because
+  the ordering is total.
+  \item
+  (Definition, $-\infty,a_-,a_+,\infty$):
+  Let $a\in \R$.
+  $-\infty,a_-,a_+,\infty$ are defined with cuts.
+  \begin{itemize}
+    \item $-\infty \defeq \paren{\emptyset, \R}$
+    \item $a_- \defeq (\openright{-\infty,a},\openright{a,\infty})$
+    \item $a_+ \defeq (\openleft{-\infty,a}, \openleft{a,\infty})$
+    \item $+\infty \defeq (\R,\emptyset)$
+  \end{itemize}
+  \item
+  (Small prop.):
+  $Y=-1/X$ is a bijection between
+  $\set{\le (\R (X)); \text{the cut of $\le$ is $-\infty$}}$
+  and $\set{\le (\R (Y)) \text{of Def. 1.1.1} }$.
+  \footnote{$-\infty$ is the cut defined already.
+  Def 1.1.1's cut is $(\openboth{-\infty,0},\openright{0,\infty})$.}
+
+  \pf
+  The bijection of $\rightarrow$ part is defining
+  a ordering $\R (Y)$ from a fixed ordering $\R (X)$ whose cut is
+  $-\infty$.  Define it as
+  $P(Y)\ge 0 \iff P(-1/X)\ge 0$.
+  We have to check the cut of $P(Y)$ is $(\openleft{-\infty,0},\openboth{0,\infty})$.
+  We have to check if $0<Y$ and $Y<(\text{any positive})$.
+  The other side is omitted.
+  \item
+  (Small prop.): $a\in \R$.
+  $Y=a-X$ is a bijection between
+  $\set{\le (\R (X)); \text{the cut of $\le$ is $a_-$}}$
+  and $\set{\le (\R (Y)) \text{of Def. 1.1.1} }$.
+  \item
+  (Small prop.): $a\in \R$.
+  $Y=X-a$ is a bijection between
+  $\set{\le (\R (X)); \text{the cut of $\le$ is $a_+$}}$
+  and $\set{\le (\R (Y)) \text{of Def. 1.1.1} }$.
+  \item
+  (Small prop.):
+  $Y=1/X$ is a bijection between
+  $\set{\le (\R (X)); \text{the cut of $\le$ is $+\infty$}}$
+  and $\set{\le (\R (Y)) \text{of Def. 1.1.1} }$.
+  \item
+  (Small prop.):
+  These props states that for each cut, there exists the unique
+  ordering.
+
+  \pf At Def. 1.1.1., we have already seen for cut $(\openleft{-\infty,0},\openboth{0,\infty})$
+  the ordering whose cut is it is unique.
+  These props states that the number of ordering whose cut is
+  $-\infty,a_-,a_+,\infty$ equals to
+  the number of Def. 1.1.1.'s ordering.
+  \item
+  (Small prop.):
+  This is stated as:
+  there exists bijection
+  \begin{align}
+    \set{\text{all orderings of }\R (X)} \simeq \set{a_+; a\in \R} \cup \set{a_-; a\in \R} \cup \set{-\infty,+\infty}.
+  \end{align}
+  \item
+  (Abuse of term.):
+  By the above bijection, we also the orderings by cuts.
+  \item
+  (TODO, p8):
+  Note that the sign of $f\in \R (X)$ for the ordering $a_-$
+  is the sign of $f$ on some small open interval $\openboth{a-\epsilon,a}$.
+  \item
+  (Definition 1.1.3., cone):
+  A cone $P$ of a field \footnote{Need not be ordered.} $F$ is a subset $P$ of $F$ such that
+  \begin{itemize}
+    \item (Addition): $x,y\in P \implies x+y\in P$
+    \item (Multiply): $x,y\in P \implies xy \in P$
+    \item (Square): $x\in K \implies x^2 \in P$
+  \end{itemize}
+  The cone $P$ is said to be proper if $-1 \notin P$.
+  \item
+  (Small example): $\set{0}$ is obviously a proper cone.
+  \item
+  (Definition 1.1.4., positive cone):
+  Let $(F,\le)$ be an ordered field.
+  The subset $P=\set{x\in F; x\ge 0}$ is called the positive cone
+  of $(F,\le)$.
+  \item
+  (Proposition 1.1.5., ordering and cone):
+  Let $F$ be an ordered field.
+  $P$ be a cone.
+  \begin{itemize}
+    \item
+    ($F$ is ordered $(F,\le)$ and $P$ is positive.)
+      $\implies$
+    ($P\cup (-P) = \R (X)$ and $P$ is proper.)
+    \item
+    ($P\cup (-P)=\R (X)$ and $P$ is proper.)
+    $\implies$
+    ($F$ is ordered and its ordering is defined by ($x\le y \iff y-x\in P$))
+  \end{itemize}
+
+  \pf
+  Prove the first half.
+  Proving $-1\ge 0$ is false is sufficient.
+  Assume $-1 \ge 0$.
+  By (non-negative and mult.), $1 = (-1)\cdot (-1) \le 0$.
+  By (addition), adding $+1$ both sides yields $0\le 1$.
+  Combining them, $1\le 0 \le 1$.  This means $0=1$.  Contradiction.
+
+  Prove the last half.
+  \begin{itemize}
+    \item (Reflectivity): Let $x\in F$. Cones always contain $0 = x-x$.  This means $x\le x$.
+    \item (Anti-symmetry):
+    Let $x,y \in F$ and $x\le y$ and $y\le x$.
+    $y-x,x-y\in P$ holds.  Assume $x-y\neq 0$.
+    By (Multiply), $-(x-y)^2 = (y-x)(x-y) \in P$.
+    Because $x-y \neq 0$, there exists $1/(x-y)\in F$.
+    By (Square), $1/(x-y)^2 \in P$.
+    $-(x-y)^2 \cdot 1/(x-y)^2 = -1 \in P$.
+    This contradicts the properness, so $x-y=0$.
+    \item (Transitivity):
+    Let $x\le y \in F$ and $y\le z \in F$.
+    $y-x \in P$ and $z-y\in P$ hold.
+    By (Addition), $z-x = (z-y) + (y-x) \in P$.
+    This means $x\le z$.
+    \item
+    (Total):
+    Obvious from $P\cup (-P)= \R (X)$.
+    \item
+    (Addition):
+    Obvious.
+    \item
+    (Non-negative and Mult.):
+    Obvious.
+  \end{itemize}
+  \item
+  (Definition, sum of square):
+  The set of sums of squares is denoted by $\sum F^2$.
+  \item
+  (Small prop.):
+  $\sum F^2$ is a cone (not always proper).
+  $\sum F^2$ is contained in every cone of $F$ (smallest!).
+  \pf Obvious.
+  \item
+  (Lemma 1.1.7.):
+  Let $P$ be a proper cone of $F$.
+  \begin{enumerate}[label=(\roman*)]
+    \item If $-a \notin P$ then $P[a]=\set{x+ay; x,y\in P}$ is a proper cone of $F$.
+    \item There exists an ordering of $F$ and its positive cone $P'$ such that $P \subset P'$.
+  \end{enumerate}
+
+  \pf (i)
+  Assume that $-1 \in P[a]$. There exists $x,y \in P$ such that
+  $-1  = x + ay$.  $(-a)y = x+1$ holds.
+  \begin{itemize}
+    \item When $y=0$:
+    $-1 = x \in P$ holds, but this contradicts that $P$ is proper and $-1 \notin P$.
+    \item When $y\neq 0$:
+    There exists $1/y \in F$ and $1/y^2 \in P$ by the property of cones.
+    \begin{align}
+      -a = \frac{x+1}{y} = \ub{y}_{\in P}\cdot \ub{\frac{1}{y^2}}_{\in P \text{(square)}} \cdot (\ub{x}_{\in P}+\ub{1}_{\in P \text{(Square)}}) \in P.
+    \end{align}
+    This contradicts the assumption.
+  \end{itemize}
+  Both case lead to contradiction, so $-1 \in P[a]$ is false.
+  $-1 \notin P[a]$.
+
+  \pf (ii)
+  \begin{enumerate}
+    \item $\bbold X$:
+    Let
+    \begin{align}
+      \bbold X = \set{Q' \subset F; P\subset Q',\, \text{$Q'$ is a proper cone}}.
+    \end{align}
+    \item $Q$:
+    $\bbold X$ is not empty because $P \in \bbold X$.
+    For a chain of $\bbold X$, its union is a upper bound of it.
+    We can apply the Zorn's lemma now, and we obtain a maximal element of $\bbold X$.
+    We name it $Q$, $Q$ is a maximal element of $\bbold X$.
+    \item
+    $Q\cup -Q = F$?
+    \begin{enumerate}
+      \item $a$: Let $a\in F-Q$.
+      \item By (i), $Q[-a]$ is a proper cone.
+      \item $Q$ is maximal (by 2), and $Q[-a]$ is a proper cone containing $Q$ (by b).
+      Hence $Q=Q[-a]$.
+      \item
+      Hence $-a \in Q$.
+      \item
+      (End of a):
+      $Q\cup -Q = F$.
+    \end{enumerate}
+    \item
+    $Q$ is proper (by 2) and $Q\cup -Q = F$ (by 3) imply
+    (by Prop. 1.1.5.)
+    the existence of an ordering $\le$ of $F$.
+    And $Q$ is positive in the ordering (by Prop. 1.1.5.).
+
+
+  \end{enumerate}
+  \item
+  (Theorem 1.1.8):
+  Let $F$ be a field.
+  The following properties are equivalent:
+  \begin{enumerate}[label=(\roman*)]
+    \item $F$ can be ordered.
+    \item The field $F$ has a proper cone.
+    \item $-1\notin \sum F^2$.
+    \item For every $x_1,\dots,x_n \in F$,
+    \begin{align}
+      \sum_{i=1}^n x_i^2 = 0 \implies
+      x_1 = \dots = x_n = 0.
+    \end{align}
+
+  \end{enumerate}
+
+  \pf
+  \begin{itemize}
+    \item (i$\Rightarrow$ ii):
+    By Prop. 1.1.5., the positive cone of $F$ is proper.
+    So the positive cone satisfies the requirement.
+    \item (ii $\Rightarrow$ iii):
+    \begin{enumerate}
+      \item
+      Let the proper cone $P$.
+      \item
+      By (Small prop.), $\sum F^2$ is the smallest cone, so
+      $\sum F^2 \subset P$.
+      \item
+      Hence
+      \begin{align}
+        -1 \in F-P \subset F-(\sum F^2).
+      \end{align}
+      So
+      \begin{align}
+        -1 \notin \sum F^2.
+      \end{align}
+    \end{enumerate}
+    \item
+    (iii $\Rightarrow$ iv):
+    \begin{enumerate}
+      \item We prove the contraposition.
+      Assume $\sum_i x_i^2 = 0$ and $x_1 \neq 0$.
+      \item
+      $-x_1^2 = \sum_{i=2}^n x_i^2$.
+      \item
+      Deviding both side by $x_1^2$ (by a, we can divide by $x_1 \neq 0$.)
+      \begin{align}
+        -1 = \ub{\frac{1}{x_1^2}}_{\in \sum F^2} \ub{\sum_{i=2}^n x_i^2}_{\in \sum F^2} \ub{\in}_{Cone!} \sum F^2.
+      \end{align}
+    \end{enumerate}
+    \item (iv $\Rightarrow $ iii):
+    \begin{enumerate}
+      \item We prove the contraposition. Assume $-1 \in \sum F^2$.
+      \item There exists $a_1,\dots,a_n \in F$ such that $-1 = \sum_{i=1}^n a_i^2$ (by 1).
+      \item
+      Hence $\sum_{i=1}^n a_i^2 + 1^2 = 0$.
+    \end{enumerate}
+  \end{itemize}
+  \item
+  (Definition 1.1.9.):
+  A field satisfying (Proposition 1.1.8.) is called real.
+  \item
+  (Small prop.):
+  A real field has characteristic 0.
+  \pf
+  Assume the characteristic is finite $n$.
+  $\sum_{i=1}^n 1^2 = 0$.  This contradicts to (Proposition 1.1.8)'s (iv).
+  \item
+  (Proposition 1.1.10.):
+  \begin{itemize}
+    \item $F$: a field such that $\Q \subset P$ (characteristic 0)
+    \item $P$: a cone of $F$
+  \end{itemize}
+  Then
+  \begin{align}
+     P = \bigcap \ub{\set{Q; [\text{$\le$ is an ordering of $F$}] \land [P\subset Q] \land [\text{$Q$ is a positive cone of $\le$}]}}_{\defeq \bbold X}.
+  \end{align}
+
+  \pf
+  $\subset $ is obvious.  We prove $\supset$.
+  \begin{enumerate}
+    \item $a$: Let $a\in F-P$.
+    \item $P$ is proper?
+    \begin{enumerate}
+      \item Assume $-1 \in P$.  (Proof by contradiction)
+      \item
+      \begin{align}
+        a = \ub{\frac{1}{4}}_{\in \sum F^2} [\ub{(1+a)^2}_{\in \sum F^2} \ub{-}_{-1 \in P} \ub{(1-a)^2}_{\sum F^2}] \in \sum F^2 \descsubset{SoS is smallest} P.
+      \end{align}
+      (the assumption $\Q \subset F$ supports the existence of $1/4$)
+      \item
+      This contradicts to 1.
+    \end{enumerate}
+    \item
+    $a\notin P$ (by 1), the properness of $P$ (by 2) and (Lemma 1.1.7.)
+    show that $P[-a]$ is proper.
+    \item
+    By (Lemma 1.1.7), there exists an order $\le$ and its positive cone $Q$ such that $P[-a]\subset Q$ (because $P[-a]$ is proper by 3).
+    \item
+    $a \notin Q$?
+    \begin{enumerate}
+      \item Assume $a \in Q$. (proof by contradiction)
+      \item $-a \in Q$ because $-a \in P[-a] \subset Q$ (by 4).
+      \item
+      $-a^2 \in Q$ because $Q$ is a cone (by 4), 1 and 2.
+      \item
+      $a\neq 0$ because $a\notin P$, $P$ is a cone (cones always contain zero).
+      \item
+      $1/a^2$ is valid and $1/a^2 \in Q$ because $Q$ is a cone.
+      \item
+      (c) and (e) say
+      \begin{align}
+        -1 = \ub{-a^2}_{\in Q} \cdot \ub{(1/a^2) }_{\in Q} \in Q.
+      \end{align}
+      \item
+      This contradicts to the properness of $Q$ ((Prop. 1.1.5 ) says the positive cone is proper. )
+    \end{enumerate}
+    \item
+    $P \subset P[-a]\subset Q$.
+    \item
+    4 and 6 says $Q \in \bbold X$.
+    \item
+    This shows
+    \begin{align}
+      a \in F-Q \subset F - (\bigcap \bbold X).
+    \end{align}
+    \item (End of 1):
+    \begin{align}
+      F-P \subset F-(\bigcap \bbold X).
+    \end{align}
+    This means
+    \begin{align}
+      \bigcap \bbold X \subset P.
+    \end{align}
+
+  \end{enumerate}
+  \item
+  (Corollary 1.1.11.):
+  Let $F$ be a field containing $\Q$.
+  Then
+  \begin{align}
+   \sum F^2 = \bigcap {\set{Q; [\text{$\le$ is an ordering of $F$}] \land [\text{$Q$ is a positive cone of $\le$}]}}
+  \end{align}
+
+  \pf
+  Use (Prop. 1.1.10.) to $\sum F^2$.
+
+\end{itemize}
+
+\subsection{Real Closed Fields}
+\label{sub:Real Closed Fields}
+\begin{itemize}
+  \item (Fact):
+  体$F$と、$F$係数既約多項式$f\in F[X]$について、
+  $F/(f)$は体になる。
+  \item (代数拡大):
+  体$F'$が$F$の代数拡大体であるとは、$F'$のすべての元が、
+  $F$係数多項式の根になっていること。
+
+  \footnote{戯言:体$F$に、$F$係数既約多項式$f$の根を追加して体にすることができる。
+  これは、「$F$にシンボル$X$を追加して、その$X$が$f(X)=0$となる」
+  という規則を追加することに外ならないので、
+  $F[X]/(f)$は$F$の代数拡大となる。(ただし、拡大したつもりでできていないことはありえる。)}
+  \item
+  (代数拡大って具体的には？):
+  次の命題がある。
+  \begin{itemize}
+    \item (雪江3.1.23):
+    $K$を体、$f$を$K$上既約で$\deg f=n$とする。このとき、次の3つが成り立つ。
+    \begin{enumerate}[label=(\arabic*)]
+      \item $L=K[x]/(f)$は体で、$[L:K]=n$である。
+      \item $\alpha = x+(f)$とおくと、$f(\alpha)=0$
+      \item $L$の$K$上の基底として$B=\set{1,\dots,\alpha^{n-1}}$をとれる。
+    \end{enumerate}
+    \item
+    つまり、(1,2)体について既約多項式を考えて、その根が含まれるような
+    代数拡大体が存在する。(3)その基底は単項式たち。
+  \end{itemize}
+  \item (Fact:代数的閉包):
+  体$F$について、その代数拡大体で、代数的閉体になっているものが存在し、
+  しかも一意である。これを$\ol F$と書くことがある。
+  [Yukie, Theorem 3.2.3, Corollary 3.2.4].
+  \item (Gaussの対称式の定理):
+  See [Cox].
+  \item (Definition 1.2.1):
+  real field $F$ が real closed field である $\iff$
+  $F$ が 非自明な real algebraic extension を持たない
+  i.e. $F$の真の代数的拡張 $F_1 \supset F$で、
+  \begin{itemize}
+    \item $F_1$がreal fieldであり、
+    \item $F_1$がalgebraic extensionである
+  \end{itemize}
+  というようなものは存在しない。
+  \item (Theorem 1.2.2.):
+  \begin{itemize}
+    \item (i$\Rightarrow$ii):
+    \begin{enumerate}
+      \item (First half starts):
+       Let $a\in F$ and $a$ is not a square in $F$.
+      \item
+      $F[\sqrt{a}] = F[X]/(X^2-a)$.
+      Hence $X^2-a$ is (by 1) irreducible,
+      $F[X]/(X^2-a)$ is a nontrivial algebraic extension of $F$.
+      \item
+      (2), (Definition 1.2.1) and (Assumption i) imply
+      $F[\sqrt{a}]$ is not real.
+      \item
+      By (3) and (Theorem 1.1.8, iii), $-1 \in F[\sqrt{a}]$.
+      So there exists $x_i,y_i \in F$
+      \begin{align}
+        -1 = \sum_{i=1}^n (x_i + \sqrt{a}y_i)^2.
+      \end{align}
+      \item
+      Hence $1$ and $\sqrt{a}$ are linearly independent in
+      vector space $F[\sqrt{a}]$ \footnote{Remember $F[\sqrt{a}]$ is a quotient of $F[X]$.},
+      picking the coefficients of $1$,
+      \begin{align}
+        -1 = \sum_{i=1}^n x_i^2 + a(\sum_{i=1}^n y_i^2)
+      \end{align}
+      in $F$.
+      \item
+      Since $F$ is real and (Theorem 1.1.8, iii)
+      \begin{align}
+        \ub{-1 - \sum_{i=1}^n x_i^2 }_{\neq 0}= a\sum_{i=1}^n y_i^2.
+      \end{align}
+      So $\sum_{i=1}^n y_i^2 \neq 0$.
+      (Strictly speaking, we need the fact $F$ be an integral domain.)
+      \item
+      We can divide by $\sum_i y_i^2$,
+      \begin{align}
+        -a = \frac{1+\sum_{i=1}^n x_i^2}{\sum_{i=1}^n y_i^2} \in \sum F^2.
+      \end{align}
+      \item
+      (End of 1): Forall $a\in F$,
+      \begin{itemize}
+        \item if $a$ is a square $\rightarrow$ $a \in \sum F^2$,
+        \item (by 1-7) if $a$ is not a square $\rightarrow$ $a\in -\sum F^2$.
+      \end{itemize}
+      Hence
+      \begin{align}
+        a \in \sum F^2 \cup -\sum F^2.
+      \end{align}
+      \item
+      \begin{align}
+        F = \sum F^2 \cup -\sum F^2.
+      \end{align}
+      \item
+      By (Theorem 1.1.8), $\sum F^2$ is a proper cone.
+      In this situation,
+      (Proposition 1.1.5) says $\sum F^2$ generates
+      an ordering of $F$.
+      And $\sum F^2$.
+      \item
+      Assume if another ordering exists.
+      Let its positive cone $P$.
+      By (Theorem 1.1.5) $P\cup -P = F$.
+      $\sum F^2$ is the smallest cone, so
+      \begin{align}
+        F
+        \desceq{9}
+        \sum F^2 \cup -\sum F^2
+        \subset
+        P \cup -P
+        =
+        F.
+      \end{align}
+      So $\sum F^2 \cup -\sum F^2 = P \cup -P$.
+      Asserting $\sum F^2 \cap -\sum F^2 = \emptyset$ and
+      $P \cap -P = \empty$, $\sum F^2 = P$.
+      This means the ordering of $P$ and $\sum F^2$ coincides.
+      \item  (First half end):
+      (10) and (11) says
+      there exists unique ordering for $F$ and its positive cone
+      is $\sum F^2$.
+      \item
+      (Last half starts) :
+      Let $f\in F[X]$ has odd degree.
+      We want to prove $f$ have a root in $F$,
+      so we negate this proposition.
+      Assume $f$ have no roots in $F$.
+      Let $d=\deg f$.
+      \item
+      We can assume $d > 1$ because
+      if $d = 1$ then obviously $f$ have the root in $F$.
+      \item
+      We can assume that
+      polynomials whose degree is $<d$ have a root in $F$.
+      \footnote{Strictly, this is proved by the well-ordering set.
+      $\set{d; f \text{has no roots}}$ is not empty because the
+      assumption.  This have the smallest element.
+      Take a polynomial that realize the smallest element.}
+      \item (\textbf{ODD})
+      $f$ is irreducible.
+      \pf Assume $f$ is reducible and there exists decomposition $f=gh$ ($\deg g,\deg h > 0$).
+      Then $\deg g,\deg h< d$.
+      $\deg g + \deg h = \deg f$ and $\deg f$ is odd, so
+      Either $\deg g$ or $\deg h$ is odd.
+      Without loss of generality, we can assume $\deg g$ is odd.
+      So by (15) $g$ have a root in $F$.
+      So $f$ have a root as the root of $g$.
+      This contradicts to (13).
+      \item
+      $F[X]/(f)$ is a nontrivial extension of $F$.
+      By (Assumption i), $F[X]/(f)$ is not real.
+      So $-1 \bmod (f) \in \sum (F[X]/(f))^2$.
+      \item
+      There exists $h_i \in F[X], \deg(h_i)<d$ and $g\in F[X]$ such that
+      \begin{align}
+        -1 = \sum_{i=1}^n h_i^2 + fg.
+      \end{align}
+      Pay attention to $\deg(h_i)<d \iff \deg(h_i)\le d-1$.
+      (the assumption $\deg(h_i)<d$ is from the fact that the ring is a quotient of $f$.)
+      \item
+      Calculate the degree of both sides of $-1 - \sum_{i=1}^n h_i^2 = fg$.
+      \begin{align}
+        d + \deg(g)
+        &=
+        \deg(f) + \deg(g)\\
+        &=
+        \deg(fg)\\
+        &=
+        \deg(-1-\sum_{i=1}^n h_i^2)\\
+        &\le
+        \max_i\deg(h_i^2)\\
+        &=
+        2\max_i \deg(h_i)\\
+        &\le
+        2 (d-1)\\
+        &=
+        2d-2.
+      \end{align}
+      \item
+      $\deg(g)\le d-2$.
+      \item
+      Seeing the equation of (18), $\deg(-1)=0$ , $\deg(\sum_i h_i^2)$ is odd and
+      $\deg(f)$ is odd, so $\deg(g)$ is odd.
+      \item
+      By (19), (20) and (15), $g$ has a root in $F$.
+      Let the root $x$.
+      \item
+      Substitute $x$ in the equation of (18).
+      \begin{align}
+        -1 = \sum_{i=1}^n h_i^2(x) + f(x)g(x) \desceq{22} \sum_{i=1}^n h_i^2(x).
+      \end{align}
+      \item
+      This means $-1 \in \sum F^2$.  This contradicts to
+      $F$ be the real. (by (12), $\sum F^2$ is a positive cone.)
+    \end{enumerate}
+    \item
+    (ii $\Rightarrow$ iii):
+    \begin{enumerate}
+      \item (First half starts):
+      Let $f\in F[X]$. Set $d = \deg f$.
+      We will prove that $f$ have a root in $F[i]$.
+      \item
+      Write $d=2^m n$ ($n$ is odd).
+      \item
+      Prove $f$ has a root in $F[i]$ by induction on $m$.
+      The case of $m=0$ is obvious from the assumption.
+      Assume that the case of $m-1$ holds.
+      \item
+
+      Take $y_1,\dots,y_d$ to be the roots of $f$ in $\ol F$.
+      \item
+      Define for all $h\in \Z$ an element of $F[X]$
+      \begin{align}
+        g_h = \prod_{1\le \lambda < \mu \le d} (X- y_\lambda - y_\mu -hy_\lambda y_\mu).
+      \end{align}
+      \item[X6]
+      $g_h$ is symmetry in $y_1,\dots,y_d$, so (by Gauss)
+      $g_h \in F[(y_1+\dots+y_d),\dots,(y_1\dots y_d)]$.
+      \item
+      The coefficients of $g_h$ are symmetry in $y_1,\dots,y_d$,
+      so (by Gauss) the coefficients of $g_h$ are in $F[(y_1+\dots+y_d),\dots,(y_1\dots y_d)]$.
+
+      \item
+      $y_1,\dots,y_d$ are the roots of $f\in F[X]$, so
+      $(y_1+\dots+y_d),\dots,(y_1\dots y_d) \in F$.
+      \item
+      By (5) and (6), $g_h \in F$.
+      \item
+      \begin{align}
+        \deg g_h = \combination{d}{2}
+        =
+        \frac{d(d-1)}{2}
+        =
+        \frac{2^m n \cdot (2^m n -1)}{2}
+        =
+        2^{m-1} \ub{(2^m n -1)n}_{\text{odd}}.
+      \end{align}
+      \item
+      Assumption of induction says $g_h $ have a root in $F[i]$.
+      \item
+      \begin{align}
+        \Forall{h\in \Z} \Exists{1\le \lambda_h < \mu_h \le d} y_{\lambda_h}+y_{\mu_h} + hy_{\lambda_h}y_{\mu_h} \in F[i].
+      \end{align}
+      \item
+      The pairs of $(\lambda_h ,\mu_h)$ is finite, but $h$ runs over $\Z$.
+      By pigeonhole principle, there exist different integers $h,h'$ such that
+      $(\lambda_h,\mu_h) = (\lambda_{h'},\mu_{h'})$.
+      We call this pair $(\lambda,\mu)$.
+      \begin{align}
+        y_\lambda + y_\mu + hy_\lambda y_\mu,\quad
+        y_\lambda + y_\mu + h'y_\lambda y_\mu \in F[i].
+      \end{align}
+      \item
+      \begin{align}
+        y_\lambda + y_\mu \in F[i] ,\quad
+        y_\lambda y_\mu \in F[i].
+      \end{align}
+      \item
+      2nd degree equation with $F[i]$ coefficients have their roots in $F[i]$?
+      \begin{enumerate}
+        \item $x^2 = a+bi$ ($a,b\in  F$) have a root in $F[i]$?
+        \begin{enumerate}
+          \item
+          If $b=0$ and $a\ge 0$ \footnote{By assumption ii, we can detrermine if a number is positive or negative.}
+          then we can take the square root of $a\in F_+ = \sum F^2$ (assumption ii).
+          We call the positive square root of $a\in F_+$ as $\sqrt{a}$.
+          If $b=0$ and $a\le 0$ then
+          we can take the square root $\sqrt{-a}i$.
+          So we can assume $b\neq 0$.
+          \item
+          Set
+          \begin{align}
+            L = \sqrt{a^2 + b^2},\quad
+            p = \frac{L + (a+bi)}{2},\quad
+            M= \frac{\sqrt{(L+a)^2 + b^2}}{2},\,
+            q = \frac{p}{M} \sqrt{L}.
+          \end{align}
+          $M\neq 0$ because $b\neq 0$.
+          \item
+          $q^2 = a+bi$ holds.
+          \pf
+          \begin{align}
+            q^2
+            &=
+            \frac{4}{(L+a)^2 + b^2}\cdot \frac{(L+a+bi)^2}{4}\cdot L\\
+            &=
+            \frac{(L+a)^2 - b^2 + 2(L+a)bi}{L^2 + 2aL + a^2 + b^2}L\\
+            &=
+            \frac{L^2+2aL+a^2-b^2 + 2(L+a)bi}{2L^2 + 2aL}L\\
+            &=
+            \frac{2a^2+2aL + 2(L+a)bi}{2L+2a}\\
+            &=
+            a+bi.
+          \end{align}
+        \end{enumerate}
+        \item
+        $ax^2+bx+c = 0$ ($a,b,c\in F[i]$) have a root in $F[i]$.
+        \pf
+        If $a=0$ then obvious.
+        If $a\neq 0$, we can make the completing square, so
+        we can solve the equation by (a).
+      \end{enumerate}
+      \item
+      $y_\lambda,y_\mu \in \ol F$ are
+      the roots of $X^2 - (y_\lambda + y_\mu)X + y_\lambda y_\mu$.
+      This polynomial have $F[i]$ coefficients by (13).
+      By (14), the roots are in $F[i]$, so $y_\lambda,y_\mu \in F[i]$.
+      \item (First half ends):
+      Hence $f$ has a root in $F[i]$.
+      \item
+      (Last half starts):
+      Let $f\in F[i][X]$.
+      \item
+      $f\ol f \in F[X]$ holds.
+      \pf
+      Write $f$ as $\sum_j (a_j + ib_j)x^j$.
+      \begin{align}
+        f \ol f
+        &=
+        [\sum_j (a_j + ib_j)x^j] \cdot [\sum_k (a_k + ib_k)x^k]\\
+        &=
+        [\sum_j (a_j+ib_j)(a_j-ib_j)x^{2j}]
+        +
+        [\sum_{j>k} (a_j+ib_j)(a_k-ib_k)x^{j+k}]
+        +
+        [\sum_{j<k} (a_j-ib_j)(a_k+ib_k)x^{j+k}]\\
+        &=
+        \sum_j (a_j^2+b_j^2)x^{2j} + 2\sum_{j>k} (a_j a_k + b_j b_k)x^{j+k}\\
+        &\in
+        F[X].
+      \end{align}
+      \item
+      By (1-16), $f\ol f$ has a root $x$ in $F[i]$.
+      So $x$ is a root of $f$ or a root of $\ol f$
+      \footnote{Assume $x$ is not a root of neither.
+      $f(x)\neq 0$ and $\ol f(x)\neq 0$.
+      So $f(x)\ol f(x)\neq 0$.  But this is a contradiction.}
+      .
+      If $x$ is a root of $f$, we complete the proof.
+      If $x$ is a root of $\ol f$, $\ol x$ is a root of $f$ (Take an allover conjugate).
+
+    \end{enumerate}
+    \item
+    (iii $\Rightarrow$ i):
+    \begin{enumerate}
+      \item
+      $F$ is real? (We will prove $-1\notin F$ and use Theorem 1.1.8)
+      \begin{enumerate}
+        \item The solutions of $X^2 = -1$ are only $i, -i$.
+        \footnote{"Since $F[i]$ is a field." is nonsense to me.}
+        \item
+        $i,-i \notin F$, so $-1 \notin F^2$.
+        \item
+        $F^2 = \sum F^2$? ($\subset$ is obvious.  We will prove only $\supset$.)
+        \begin{enumerate}
+          \item
+          It is sufficient to prove for all $a,b\in F$ there exists $x\in F$ such that $a^2 + b^2 = x^2$.
+          \item
+          Let $c,d\in F$ as $a+ib = (c+id)^2$.
+          Take $c,d$ exists because $F[i]$ is algebraically closed.
+          \item
+          We can take $x$ as $c^2+d^2$.\pf
+          \begin{align}
+            x^2
+            &=
+            (c^2 + d^2)^2\\
+            &=
+            c^4 + 2c^2d^2 + d^4\\
+            &=
+            (c^2-d^2)^2 + 4c^2+d^2\\
+            &\desceq{ii}
+            a^2 + b^2.
+          \end{align}
+        \end{enumerate}
+        \item
+        By (b) and (c), $-1 \notin \sum F^2$.
+        \ite
+        By Theorem 1.1.8, $F$ is real.
+      \end{enumerate}
+      \item
+      $F[i]$ is the only nontrivial algebraic extension
+      because $F[i]$ is (by assumption iii) algebraically closed.
+      (If we intend to add a root $x$ of $f$ to $F$, $x$ \in $F[i]$.)
+      \item
+      $-1 \in \sum(F[i])^2$ because $i^2 = -1 \in F[i]$.
+      \item
+      $F[i]$ is not real.
+      \item
+      By (2) and (4), all the algebraic extensions of $F$ are not real.
+      \item
+      By (1) nad (5), $F$ is real closed.
+    \end{enumerate}
+  \end{itemize}
+  \item
+  (Theorem 1.2.2.):キモだけ。
+  \begin{itemize}
+    \item (i$\Rightarrow$ii):
+    \begin{itemize}
+      \item 「hence, $F[\sqrt{a}]$ is not real」:
+      真に拡張してしまっているので、「real fieldである」という方がおかしいということになる。
+      \item 「only one possible ordering」:
+
+      $\sum F^2$について、$F$はrealなので、
+      $-1 \notin \sum F^2$となり、$\sum F^2$はproper coneになっている。
+      よって、      Proposition 1.1.5.より、proper coneによって
+      orderingが定まってしまう。
+      \item
+      「it remains to show that, if $f\in F[X]$ has...」:
+      奇数次を持つ$f\in F[X]$が$F$に根を持たなかったとする。
+      $\deg f=1$だと根を持つにきまっているから$\deg f >1$としてよい。
+      さらに、$d=\deg f$として、$d$より小さい奇数次までは
+      根を持っていたとしてもよい。
+
+      すると、$f$は既約であるということになる。なぜなら、
+      仮に分解できたら、奇数次を分解するのだから分解した因子のほうに
+      $d$次より小さい奇数次の多項式が出てきて、それが仮定より根を持つからである。
+
+      \item
+      「The polynomial $g_h$ is symmetric in ...」:
+      Factとして、対称多項式は、その係数の基本対称式の和と積(つまり多項式)
+      として書くことができる。
+
+      さらに、$y_1,\dots,y_d$を根に持つ多項式が$f$であり、
+      $f$は$F$係数だったのだから、根と係数の関係から$y_1,\dots,y_d$
+      の基本対称式は$\in F$であり、したがって$g_h\in F[X]$である。
+
+      \item (range over $\Z$):
+      ハトノスを使う。
+
+      \item (The field $F$ is real...):
+      なぜか順序が逆に書いてあるので、$a^2+b^2=(c^2+d^2)^2$まで読めばできる。
+      $c,d$は、代数的閉体と仮定したので存在する。
+
+      \item
+      (To conclude..):
+      $F$の代数的拡張は、$F[X]/(f)$だが、
+      $F[i]$は代数的閉体という仮定から、$f$が既約ならそれは
+      2次以下であることがわかる(共役を根に持つから。)。
+      (cf, $\C$の2次拡大はない。)
+
+
+    \end{itemize}
+  \end{itemize}
+  \item
+  (Example 1.2.3):
+  \begin{itemize}
+    \item ($\R$):
+    $\C = \R [i]$, and $\C$ is algebraically closed.  Use (iii).
+    \item ($\R_{\alg}$):
+    \begin{itemize}
+      \item (Field):
+      Let $a,b\in \R_\alg$.
+      $\Q \subset \Q [a,b] \subset \R_{\alg}$ and $\Q [a,b]$ is
+      an algebraic extension of $\Q$.
+      So $a+b \in \Q [a,b] \subset \R_{\alg}$ and $ab \in \Q [a,b]$.
+      If $a \neq 0$ then $a\inv \in \Q [a] \subset \R_\alg$.
+      \item (point):
+      $\R_\alg$-coefficient polynomial's roots are in $\R_\alg$.
+      \pf
+      $x$ is a root of $a_n x^n + \dots + a_0 = 0$ ($a_i \in \R_\alg$).
+      \begin{align}
+        a_0,\dots,a_n \in \Q [a_0,\dots,a_n].
+      \end{align}
+      Because $a_0,\dots,a_n$ are algebraic over $\Q$,
+      $\Q (a_0,\dots,a_n)$ is an algebraic extension of $\Q$.
+      So $[\Q (a_0,\dots,a_n): \Q] < \infty$.
+      $\Q (a_0,\dots,a_n)(x)$ is an algebraic extension of $\Q (a_0,\dots,a_n)$.
+      So $[\Q (a_0,\dots,a_n,x):\Q (a_0,\dots,a_n)]<\infty$.
+      By a fact,
+      \begin{align}
+        [\Q (a_0,\dots,a_n,x):\Q] = [\Q (a_0,\dots,a_n,x):\Q (a_0,\dots,a_n)] [\Q (a_0,\dots,a_n),\Q] < \infty.
+      \end{align}
+      So $\Q (a_0,\dots,a_n,x)$ is an algebraic extension of $\Q$ (think of $1,x,x^2,\dots$.  We have a linearly dependent.).
+      So $x$ is algebraic over $\Q$, then $x \in \R_\alg$.
+      \item (unique ordering):
+      We will prove $\sum (\R_\alg)^2 = {\R_\alg}_{\ge 0}$.
+      If $a \in \R_\alg$ and $a \ge 0$ then $\sqrt{a} \in \R$.
+      Because $a$ is a root of $\R_\alg$-coefficient $X^2 -a$.
+      So $\sqrt{a} \in \Q [\sqrt{a}] \subset \R_\alg$.
+      We have $\sum (\R_\alg)^2 \cup -\sum (\R_\alg)^2 = {\R_\alg}_{\ge 0}\cup {\R_\alg}_{\le 0} = \R_\alg$.
+      So induced ordering by $\R$ is the unique ordering of $\R_\alg$.
+      \item (odd polynomial):
+      $f = a_n x^n + \dots + a_0$ is odd degree ($a_i \in \R_\alg$).
+      $f$ have a root in $\R$.  By (point), the root in $\R_\alg$.
+      \item (real closed):
+      Use (ii).
+    \end{itemize}
+
+    \item
+    (Puiseux series with real coefficients):
+    $\R (X)\puiseux$ is a set of formal series:
+    \begin{align}
+      \R (X)\puiseux
+      =
+      \set{\sum_{i=k}^\infty a_i X^{i/q}; k\in \Z, q\in \N-\zeroset,\, a_i \in \R}.
+    \end{align}
+    $\C (X)\puiseux$ is similiar.
+    $\R (X)\puiseux$ is real closed.
+    \pf
+    It is known that $\C (X)\puiseux$ is algebraically closed.
+    $\C (X)\puiseux = \R (X)\puiseux [i]$ because
+    \begin{align}
+      \sum_{i=k}^\infty (a_i + \sqrt{-1}b_i)X^{i/q}
+      =
+      \sum_{i=k}^\infty a_i X^{i/q} + \sqrt{-1}\sum_{i=k}^\infty b_i X^{i/q}.
+    \end{align}
+    \item
+    A positive element of $\R (X)\puiseux$ is a Puiseux
+    series of the form $\sum_{i=k}^\infty a_i x^{i/q}$ with $a_k>0$.
+    \pf
+    We need to prove that it is square.
+    Think of a square of an element of $\R (X)\puiseux$.
+    \begin{align}
+      (\sum_{i=k}^\infty b_i X^{i/2q})^2
+      &=
+      (\sum_{i=k}^\infty b_i X^{i/2q})(\sum_{i=k}^\infty b_i X^{i/2q})\\
+      &=
+      \sum_{d=2k}^\infty \sum_{i=0}^{d-2k} b_{k+i} b_{(d-2k)-i} X^{d/2q}\\
+      &=
+      b_k^2 X^{2k/2q} + (b_k b_{k+1} + b_{k+1}b_k)X^{(2k+1)/2q} + \dots.
+    \end{align}
+    So we can set $b_k = \sqrt{a_k}$ and $b_{k+1},\dots$ recursively.
+    If $a_k < 0$, we cannot make such a process.
+  \end{itemize}
+  \item
+  We use the same interval symbols $\closeboth{a,b},\openboth{a,b}$.
+  \item
+  (Proposition 1.2.4):
+  \begin{itemize}
+    \item $\R$: real closed field
+    \item$f\in R [X]$
+    \item $a,b \in R$: $a<b$
+    \item $f(a)f(b) < 0$
+  \end{itemize}
+  then there exists $x \in \openboth{a,b}$ such that $f(x )=0$.
+
+  \pf
+  \begin{enumerate}
+    \item By (iii) of the (Theorem 1.2.2), the irreducible factors of $f$ are linear or
+    have the form of $(X-(c+di))(X-(c-di))=(X-c)^2 + d^2$ for $c,d\in R$.
+    \item
+    The latters don't yield opposite sign.
+    \item
+    There exists a linear factor of $f$ who has opposite sign at $a$ and $b$.
+    Name it $g(X)= X-x$.  Now, $x$ is a root of $f$.
+    $g(a)g(b) < 0$.
+    \item
+    $g$ is strictly increasing, so $g(a) < 0$ and $g(b) > 0$.
+    So $g(a) < g(x) = 0 < g(b)$.
+    By increasingness, $a<x<b$.
+
+  \end{enumerate}
+  \item
+  (Proposition 1.2.5):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f\in R[X]$
+    \item $a,b \in R$: $a<b$, $f(a)=f(b)=0$
+  \end{itemize}
+  then $f'$ has a root in $\openboth{a,b}$.
+
+  \pf
+  \begin{enumerate}
+    \item We can suppose that $a$ and $b$ are two consecutive roots of $f$,
+    i.e. $f$ never vanishes in $\openboth{a,b}$.
+    (We can replace nearer roots if they are not consecutive.)
+    \item
+    Factorize $f$ as
+    \begin{align}
+      f = (X-a)^m (X-b)^n g
+    \end{align}
+    where $g$ never vanishes in $\openboth{a,b}$.
+    \item
+    Differentiate $f$ (algebraic derivative)
+    \begin{align}
+      f'
+      &=
+      m(X-a)^{m-1}(X-b)^n g + (X-a)^m n(X-b)^{n-1}g + (X-a)^m (X-b)^n g'\\
+      &=
+      (X-a)^{m-1}(X-b)^{n-1}\ub{[m(X-b)g + n(X-a)g + (X-a)(X-b)g']}_{\defeq g_1}.
+    \end{align}
+    \item
+    $g(a)$ and $g(b)$ have the same signs because (2) and the contraposition of (Proposition 1.2.4).
+    \item
+    $g_1(a)=m(a-b)g(a)$ and $g_1(b)=n(b-a)g(b)$,
+    hence $g_1(a)$ and $g_1(b)$ have opposite signs.
+    \item
+    By (Proposition 1.2.4), $g_1$ has a root in $\openboth{a,b}$ and
+    so does $f'$.
+
+  \end{enumerate}
+  \item
+  (Corollary 1.2.6):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f\in R[X]$
+    \item $a,b\in R$: $a<b$
+  \end{itemize}
+  then there exists $c\in \openboth{a,b}$ such that
+  $f(b)-f(a) = (b-a)f'(c)$.
+  \pf
+  \begin{enumerate}
+    \item Let $g(x) = f(x) - [\frac{f(b)-f(a)}{b-a}(x-a)+f(a)]$.
+    \item
+    $g(a)=0$ obviously holds.
+    \begin{align}
+      g(b)
+      =
+      f(b) - [\frac{f(b)-f(a)}{b-a}(b-a)+f(a)] = 0.
+    \end{align}
+    \item
+    Apply (Proposition 1.2.6) to $g$.
+  \end{enumerate}
+  \item
+  (Corollary 1.2.7):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f\in R[X]$
+    \item $a,b \in R$: $a<b$
+    \item $f'$ is positive (resp. negative) on $\openboth{a,b}$
+  \end{itemize}
+  then $f$ is strictly increasing (resp. strictly decreasing) on $\closeboth{a,b}$.
+
+  \pf
+  Obvious from (Corollary 1.2.6).
+  \item
+  
+\end{itemize}
+
+\end{document}
