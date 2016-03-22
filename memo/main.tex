@@ -1177,6 +1177,42 @@
   \pf
   Obvious from (Corollary 1.2.6).
   \item
+  (Definition 1.2.8):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f,g \in R[X]$
+  \end{itemize}
+  The strum sequence of $f$ and $g$ is the sequence of
+  polynomials $(f_0,\dots,f_k)$ define as follows
+  \begin{itemize}
+    \item $f_0 = f$
+    \item $f_1 = f'g$
+    \item $f_2 = f_1 q_2 - f_0$ with $q_2 \in R[X]$ and $\deg(f_2)  < \deg(f_1)$.
+    \item $f_i = f_{i-1} q_i - f_{i-2}$ with $q_i \in R[X]$ and $\deg(f_i) < \deg(f_{i-1})$
+    \item $f_k$ is a GCD of $f$ and $f'g$. \footnote{GCD has an ambiguity of unit.}
+  \end{itemize}
+
+  \pf
+  The Strum sequence is determined by $f$ and $g$ because
+  for $i\ge 2$, $f_i$ is determined by division algorithm.
+  The stop of the sequence is Euclid algorithm.
+  ($\GCD(f_0,f_1)=\GCD(f_1,f_2)=\dots.$)
+  \item
+  (Definition, sign change):
+  count one sign change$a_i a_l < 0$
+  \begin{itemize}
+    \item     with $l=i+1$
+    \item $l<i+1$ and $a_j = 0$ ofr every $j (i < j < l)$.
+  \end{itemize}
+
+  i.e. the number of subsequence such that $ab<0$ and
+  \begin{itemize}
+    \item $(a,b)$
+    \item $(a,0,b)$
+    \item $(a,0,0,b)$
+    \item $\vdots$
+  \end{itemize}
+  \item
   
 \end{itemize}
 

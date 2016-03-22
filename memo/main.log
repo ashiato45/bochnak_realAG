@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  22 MAR 2016 01:28
+This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  22 MAR 2016 10:34
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -108,7 +108,7 @@ luatexbase-attr: luatexbase.attributes["luaotfload@cursbase"] = 6
 luatexbase-attr: luatexbase.attributes["luaotfload@curscurs"] = 7
 luatexbase-attr: luatexbase.attributes["luaotfload@cursdone"] = 8
 luatexbase-attr: luatexbase.attributes["luaotfload@state"] = 9
-luaotfload | main : fontloader loaded in 0.026 seconds
+luaotfload | main : fontloader loaded in 0.031 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1030,10 +1030,10 @@ and I'll forget about whatever was undefined.
 Here is how much of LuaTeX's memory you used:
  16380 strings out of 494694
  195319,383344 words of node,token memory allocated
- 4717 words of node memory still in use:
-   9 hlist, 2 vlist, 4 rule, 3 glue, 29 kern, 1 glyph, 433 attribute, 818 glue_s
-pec, 27 attribute_list, 1 write nodes
-   avail lists: 1:1,2:63660,3:395,4:2074,5:377,6:2347,7:49,9:546,10:112
+ 5197 words of node memory still in use:
+   12 hlist, 2 vlist, 4 rule, 9 glue, 29 kern, 1 penalty, 2 glyph, 620 attribute
+, 822 glue_spec, 38 attribute_list, 1 write, 2 pdf_colorstack nodes
+   avail lists: 1:1,2:63462,3:394,4:2062,5:381,6:2346,7:49,9:543,10:112
  19234 multiletter control sequences out of 65536+600000
  77 fonts using 32802279 bytes
  58i,21n,82p,403b,705s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -1059,7 +1059,7 @@ onts/type1/public/amsfonts/cm/cmsy5.pfb><<c:/texlive/2014/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy7.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb>
-Output written on main.pdf (13 pages, 300193 bytes).
+Output written on main.pdf (13 pages, 302758 bytes).
 
 PDF statistics: 168 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams
