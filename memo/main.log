@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  22 MAR 2016 10:34
+This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  7 APR 2016 01:33
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -108,7 +108,7 @@ luatexbase-attr: luatexbase.attributes["luaotfload@cursbase"] = 6
 luatexbase-attr: luatexbase.attributes["luaotfload@curscurs"] = 7
 luatexbase-attr: luatexbase.attributes["luaotfload@cursdone"] = 8
 luatexbase-attr: luatexbase.attributes["luaotfload@state"] = 9
-luaotfload | main : fontloader loaded in 0.031 seconds
+luaotfload | main : fontloader loaded in 0.041 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1023,20 +1023,43 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[10] [11] [12]
+[10] [11] [12] [13] [14]
+! Undefined control sequence.
+l.1351           \ie
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[15] [16]
+Overfull \hbox (156.86798pt too wide) in paragraph at lines 1501--1501
+[][] 
+ []
+
+! Undefined control sequence.
+l.1527   \iem
+           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 \tf@thm=\write4
- [13] (./main.aux))
+[17] (./main.aux))
 
 Here is how much of LuaTeX's memory you used:
- 16380 strings out of 494694
+ 16382 strings out of 494694
  195319,383344 words of node,token memory allocated
- 5197 words of node memory still in use:
-   12 hlist, 2 vlist, 4 rule, 9 glue, 29 kern, 1 penalty, 2 glyph, 620 attribute
-, 822 glue_spec, 38 attribute_list, 1 write, 2 pdf_colorstack nodes
-   avail lists: 1:1,2:63462,3:394,4:2062,5:381,6:2346,7:49,9:543,10:112
- 19234 multiletter control sequences out of 65536+600000
+ 4854 words of node memory still in use:
+   9 hlist, 2 vlist, 4 rule, 3 glue, 29 kern, 1 glyph, 433 attribute, 818 glue_s
+pec, 27 attribute_list, 1 write nodes
+   avail lists: 1:1,2:63660,3:532,4:1937,5:398,6:2347,7:58,9:606,10:112
+ 19236 multiletter control sequences out of 65536+600000
  77 fonts using 32802279 bytes
- 58i,21n,82p,403b,705s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 58i,23n,82p,403b,705s stack positions out of 5000i,500n,10000p,200000b,100000s
 <<c:/texlive/2014/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb><<c:/tex
 live/2014/texmf-dist/fonts/type1/public/bbold-type1/bbold5.pfb><<c:/texlive/2014
 /texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb><<c:/texlive/2014/texmf-di
@@ -1056,13 +1079,14 @@ amsfonts/cm/cmr5.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
 /2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><<c:/texlive/2014/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><<c:/texlive/2014/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy5.pfb><<c:/texlive/2014/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy7.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/sym
-bols/msam10.pfb>
-Output written on main.pdf (13 pages, 302758 bytes).
+/public/amsfonts/cm/cmsy6.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy8.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb>
+Output written on main.pdf (17 pages, 342172 bytes).
 
-PDF statistics: 168 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
+PDF statistics: 184 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

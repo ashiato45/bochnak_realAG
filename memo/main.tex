@@ -1199,21 +1199,346 @@
   ($\GCD(f_0,f_1)=\GCD(f_1,f_2)=\dots.$)
   \item
   (Definition, sign change):
+  Define for an sequence $(a_0,\dots,a_k)$ where $a_0 \neq 0$.
   count one sign change$a_i a_l < 0$
   \begin{itemize}
     \item     with $l=i+1$
     \item $l<i+1$ and $a_j = 0$ ofr every $j (i < j < l)$.
   \end{itemize}
 
-  i.e. the number of subsequence such that $ab<0$ and
+  i.e. the number of successive subsequence such that $ab<0$ and
   \begin{itemize}
     \item $(a,b)$
     \item $(a,0,b)$
     \item $(a,0,0,b)$
     \item $\vdots$
   \end{itemize}
+
+  I write the sign change of a sequence $(a_0,\dots,a_k)$ as $\SC(a_0,\dots,a_k)$
+  on my own.
   \item
-  
+  (Definition, $v(f,g;a)$):
+  \begin{itemize}
+    \item $f,g \in R[X]$
+    \item $a\in R$: $a$ is not a root of $f$ (To satisfy the hypothesis of the definition of sign change.)
+    \item $(f_0,\dots,f_k)$: the Strum sequence of $f$ and $g$
+  \end{itemize}
+  \item (Theorem 1.2.9, Sylvester's Theorem):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f,g \in R[X]$
+    \item $a,b \in R$: $a<b$, neither $a$ nor $b$ are roots of $f$
+  \end{itemize}
+  then
+  \begin{align}
+    \#\set{x\in \openboth{a,b}; f(x) = 0 \land g(x)>0} -
+    \# \set{x\in \openboth{a,b}; f(x)=0 \land g(x) < 0} =
+    v(f,g;a) - v(f,g;b).
+  \end{align}
+  (We don't care of multiplicity.)
+  \item
+  \begin{enumerate}
+    \item Define $(g_\bullet)$ as
+    \begin{align}
+      (g_0,\dots,g_k) \defeq (f_0/f_k,\dots,f_k/f_k).
+    \end{align}
+    \item
+    Let $x$ is not a root of $f$.
+    Because $f_k | f$, $x$ is not a root of $f_k$.
+    So division by $f_k(x)$ is reasonable and
+    a sequence $(g_0(x),\dots,g_k(x))$ makes sense.
+    \item
+    The signs of $(f_0(x),\dots,f_k(x))$ and $(g_0(x),\dots,g_k(x))$
+    coincide for each $x\in R$.
+
+    (Book: This implies for all $x\in R\setminus \set{\text{roots of $f$}}$\footnote{
+    the exclusion of roots is needed for the definition of $\SC(f_0(x),f_1(x))=\SC(f(x),f'g(x))$.
+    }
+    \begin{align}
+      \SC(f_0(x),f_1(x)) = \SC(g_0(x),g_1(x)),\quad
+      \SC(f_{i-1}(x),f_i(x),f_{i+1}(x)) = \SC(g_{i-1}(x),g_i(x),g_{i+1}(x)).
+    \end{align}
+    )
+    \item
+      \begin{align}
+        \set{\text{roots of $g_0$}} = \set{\text{roots of $f$}} \setminus \set{\text{roots of $g$}}
+      \end{align}
+      ?
+      \begin{enumerate}
+        \item Calculate $g_0$.
+        \item
+        Assume
+        \begin{align}
+          f &= (x-a_1)^{A_1} \dots (x-a_l)^{A_l} (x-b_1)^{B_1}\dots (x-b_m)^{B_m} F(x)\\
+          g &= (x-b_1)^{C_1}\dots (x-b_m)^{C_m} (x-c_1)^{D_1}\dots (x-c_n)^{D_n} G(x)
+        \end{align}
+        where $a_\bullet,b_\bullet,c_\bullet$ are different and
+        $F,G$ don't have root in $R$.
+        $A_\bullet,B_\bullet,C_\bullet,D_\bullet \ge 1$.
+        ($b_\bullet$ are the common roots of $f$ and $g$, $a_\bullet$ are the roots only of $f$, $c_\bullet$ are the roots only of $g$.)
+        \item There exists $F_1(x) \in R[x]$ such that
+        \begin{align}
+          f' =
+          (x-a_1)^{A_1-1}\dots (x-a_l)^{A_l-1} (x-b_1)^{B_1-1}(x-b_m)^{B_m-1} F_1(x).
+        \end{align}
+        where $F_1$ doesn't disappear at $a_\bullet,b_\bullet$ (Calculate!).
+        \item
+        \begin{align}
+          f'g =
+          (x-a_1)^{A_1-1}\dots (x-a_l)^{A_l-1} (x-b_1)^{B_1 + C_1 - 1}(x-b_m)^{B_m+C_m-1} F_1(x)G(x).
+        \end{align}
+        \item
+        \begin{align}
+          \GCD(f,f'g)
+          &=
+          (x-a_1)^{A_1-1}\dots (x-a_l)^{A_l-1}(x-b_1)^{B_1}\dots (x-b_m)^{B_m}\\
+          &\quad \times \ub{\GCD\left( \ub{(x-a_1)\dots (x-a_l) F_1(x)}_{H_1(x)\defeq}, \ub{(x-b_1)^{C_1-1} \dots (x-b_m)^{C_m-1} F_1(x) G(x)}_{H_2(x)\defeq} \right)}_{ H(x) \defeq}.
+        \end{align}
+        (by (b), $C_\bullet -1 \ge 0$)
+        \item
+        By the definition of GCD ($H|H_1$ and $H|H_2$), the roots of $H$ is a root of $H_1$ and $H_2$.
+        \item
+        If $\xi$ is not a root of $H_1$ or not a root of $H_2$ then
+        $\xi$ is not a root of $H$.
+        \item
+        By (c), $b_\bullet$ are not roots of $H_1$.
+        \item
+        By (b) and (c), $a_\bullet$ are not roots of $H_2$.
+        \item
+        (g,h,i) implies $a_\bullet,b_\bullet$ are not roots of $H$.
+        \item
+        By (e, j),
+        \begin{align}
+          \frac{f}{\GCD(f,f'g)} = (x-a_1)\dots (x-a_l) \ub{\frac{F(x)}{H(x)}}_{\in R[x]}.
+        \end{align}
+        because $f/\GCD(f,f'g) \in R[x]$.  By (b), $\frac{F}{H}$ have no root at $a_\bullet$.
+        \item
+        By definition of $g_0$, $g_0 = \pm f/\GCD(f,f'g)$.
+        $a_\bullet$ were the roots of $f$ which are not roots of $g$.
+      \end{enumerate}
+      \item
+      $i\in \set{0,\dots,k}$, $g_{i-1} \perp g_i$ \pf
+      Because $f_k = \pm \GCD(f,f'g)$, $\GCD(g_0,g_1)=1$.
+      Next $f_i = f_{i-1}q_i - f_{i-2}$, so
+      $(f_{i-1},f_{i-2}) = (f_{i-1}, f_{i-1}q_i - f_i) = (f_{i-1},f_i) = (1)$.
+      \item
+      Let $c$ be a polynomial $g_i$.
+      \begin{enumerate}
+        \item When $g_i = g_0$. $c$ is a root of $g_0$.
+        (Pay attention to Proposition 1.2.4 intermediate-value theorem from here!)
+        \begin{enumerate}
+          \item By (5), $c$ is not a root of $g_1$.
+          (the sign change happens immediately!)
+          \item
+          By (4), $f(c)=0$ and $g(c)\neq 0$.
+          \item
+          We define the sign of $f'(c_-)$ as the sign of $f'$ immediately to the left of $c$.
+          We can take "immediate left" because
+          the roots of $f'$ are finite and intermediate-value theorem.
+          We define $f'(c_+)$ similarly.
+          \item
+          $f'(c_-) \neq 0$ and $f'(c_+) \neq 0$. \pf
+          Assume $f'(c_-)=0$.  We have infinitely many "immediate left" points,
+          so $f'$ vanishes at infinitely many points. Polynomial $f' \equiv 0$.
+          $f(c)=0$ (ii) and $f'\equiv 0$ imply $f\equiv 0$.
+          This contradicts to "neither $a$ nor $b$ are roots of $f$".
+          \item
+          By (ii,iv), we have eight cases:
+          \begin{align}
+            (g(c),f'(c_-),f'(c_+)) =
+            (+++), (++-), (+-+), (+--), (-++), (-+-), (--+), (---).
+          \end{align}
+          \ie
+          \item
+          In every case as $x$ passes through $c$
+          \footnote{Immediate left $c_-$ and right $c_+$} ,
+          the number of sign changes in $(f_0(x),f_1(x))$
+          \begin{itemize}
+            \item $g(c)>0 \implies$ decreases by $1$
+            \item $g(c)<0 \implies$ increases by $1$
+          \end{itemize}
+          (We don't have to think of the case of $g(c)=0$ because ii)
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+          \item When $i=1,\dots,k$.
+          \item
+          $g_i(c)=0$
+          \item
+          By (5), $g_{i-1}\perp g_i$ and $g_i \perp g_{i+1}$.
+          This means $g_{i-1}(c)\neq 0$ and $g_{i+1}(c)\neq 0$.
+          \item
+          $g_{i-1}(c)g_{i+1}(c) < 0$. \pf
+          By definition of a sequence, $g_{i+1}=g_i q_{i+1} - g_{i-1}$
+          \begin{align}
+            g_{i+1}(c) = g_i(c) q_{i+1}(c) - g_{i-1}(c) \desceq{ii} -g_{i-1}(c).
+          \end{align}
+          \item
+          The signs of $(f_{i-1}(x),f_i(x),f_{i+1}(x))$ is
+          $(++-),(-++),(+--),(-++)$.
+          \item
+          The number of sign changes in $(f_{i-1}(x),f_i(x),f_{i+1}(x))$ does not change
+          passing $c$.
+        \end{enumerate}
+      \end{enumerate}
+      \item By intermediate-value theorem and (6),
+      the sign changes in intervals made by roots of $g_\bullet$.
+      We can chase the sign changes only by watching roots of $g_\bullet$,
+      and the way the change happens is (a) or (b) (may happen simultaneously).
+      \item
+      \begin{align}
+        \#\set{x\in \openboth{a,b}; f(x) = 0 \land g(x)>0} -
+        \# \set{x\in \openboth{a,b}; f(x)=0 \land g(x) < 0} =
+        v(f,g;a) - v(f,g;b).
+      \end{align}
+  \end{enumerate}
+  \item
+  (Example of sign change):
+  \begin{align}
+    (+-+-+-+,6)
+    &\to
+    (--+-+-+, 5)\\
+    &\to
+    (-++-+-+, 5)\\
+    &\to
+    (+++-+-+, 4).
+  \end{align}
+  \item (TODO): Why "real closed"?
+  \item (Corollary 1.2.10, Strum's Theorem):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f\in R[X]$
+    \item $a,b\in R$: $a<b$, $f(a)\neq 0,\, f(b)\neq 0$
+  \end{itemize}
+  then
+  \begin{align}
+    \# \set{\text{roots of $f$}} = v(f,1; a) - v(f,1;b).
+  \end{align}
+  \pf
+  Apply 1.2.9 with $g=1$.
+  \item
+  (Lemma 1.2.11):
+  \begin{itemize}
+    \item $R$ : real closed field
+    \item $f=a_n X^n + \dots + a_0 \in R[X],\, a_n \neq 0$
+    \item $M=1+\abs{a_{n-1}/a_n} + \dots + \abs{a_0/a_n}$
+  \end{itemize}
+  then
+  \begin{itemize}
+    \item $f$ never vanishes on $\openright{M,+\infty}$ and its sign is the sign of $a_n$.
+    \item $f$ never vanishes on $\openleft{-\infty,-M}$ and its sign is the sign of $(-1)^na_n$.
+  \end{itemize}
+  \item
+  \pf We prove the first one.
+  \begin{enumerate}
+    \item Let $x\in R$, $\abs{x}\ge M$.  (Aim: $f(x)\neq 0$ and $\sign f(x) = \sign a_n$)
+    \item
+    Triangle ineq. holds.
+    \begin{align}
+      \abs{\frac{a_{n-1}}{a_n} x\inv + \dots + \frac{a_0}{a_n}x^{-n}}
+      \descle{$M>1$}
+      (\abs{b_{n-1}}+\dots + \abs{b_0})M^{-1} < 1.
+    \end{align}
+    \item
+    \begin{align}
+      -1 < \frac{a_{n-1}}{a_n} x\inv + \dots + \frac{a_0}{a_n}x^{-n} < 1.
+    \end{align}
+    \item
+    \begin{align}
+      0 < 1+\frac{a_{n-1}}{a_n} x\inv + \dots + \frac{a_0}{a_n}x^{-n}.
+    \end{align}
+    \item
+    \begin{align}
+      f(x) = a_n x^n \ub{(1+\frac{a_{n-1}}{a_n} x\inv + \dots + \frac{a_0}{a_n}x^{-n})}_{>0}.
+    \end{align}
+  \end{enumerate}
+  \item
+  (Corollary 1.2.12):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f,g \in R[X]$
+    \item $(f_0,\dots,f_k)$: the Strum sequence of $f$ and $g$
+    \item $v(f,g;+\infty) = \SC (\LC f_0,\dots,\LC f_k)$
+    \item $v(f,g;-\infty) = \SC (\LC f_0(-X),\dots,\LC f_k (-X))$
+  \end{itemize}
+  then
+  \begin{align}
+    \# \set{x\in R; f(x)=0 \land g(x)>0} - \# \set{x\in R; f(x)=0 \land g(x)<0}
+    =
+    v(f,g;-\infty) - v(f,g;+\infty).
+  \end{align}
+  \item
+  \pf
+  \begin{enumerate}
+    \item
+    Let $M$ is larger than all the roots of $f_0,\dots,f_k$ are in $\openboth{-M,M}$.
+    (This is possible because the roots are finite.)
+    \item
+    By 1.2.11 (the latter),
+    \begin{align}
+      v(f,g,+\infty) &= \SC(\LC f_0,\dots,\LC f_k)
+      \desceq{1.2.11}
+      \SC(f_0(M),\dots,f_k(M))
+      =
+      v(f,g,M),\\
+      v(f,g,-\infty) &=
+      \SC(\LC f_0(-X),\dots,\LC f_k(-X))
+      =
+      \SC((-1)^{\deg f_0} \LC f_0,\dots, (-1)^{\deg f_k} \LC f_k)
+      \desceq{1.2.11}
+      v(f,g,-M).
+    \end{align}
+    \item
+    By 1.2.9,
+    \begin{align}
+      \# \set{x\in R; f(x)=0 \land g(x)>0} - \# \set{x\in R; f(x)=0 \land g(x)<0}
+      &=
+      \# \set{x\in \openboth{-M,M}; f(x)=0 \land g(x)>0} - \# \set{x\in \openboth{-M,M}; f(x)=0 \land g(x)<0}\\
+      &=
+      v(f,g;-M) - v(f,g;M)\\
+      &=
+      v(f,g;-\infty) - v(f,g;+\infty).
+    \end{align}
+  \end{enumerate}
+  \item
+  (Remark 1.2.13):
+  \begin{itemize}
+    \item $f\in R[X]$: monic, square free, degree $n$ \footnote{$f\perp f'$, or have no multiple roots}
+  \end{itemize}
+  then
+  $f$ has $n$ roots $\iff$
+  the Strum sequence of $f$ and $1$ have $n+1$ length ($(\ub{f_0}_{=f},\ub{f_1}_{=1\cdot f' = f'},\dots,f_n)$) and
+  leading coefficients of $f_0,\dots,f_n$ are positive.
+  \item
+  \pf
+  $\Rightarrow$:
+  By 1.2.12, $v(f,1;-\infty)-v(f,1;+\infty)=n$.
+  Because $\deg f = n$, the length of the Strum sequence is $\le n+1$.
+  So $0\le v(f,1;-\infty)\le n$ and $0\le v(f,1;+\infty) \le n$.
+  $v(f,1;-\infty)$ must be $n$ and $v(f,1;+\infty)$ must be $0$.
+  The signs of $(f_0(+\infty),\dots,f_n(+\infty))$ \footnote{leading coefficients}
+  are $(++\dots ++)$ because $f$ is monic.
+
+  $\Leftarrow$:
+  By the definition of Strum sequences,
+  $\deg f_i = n - i$.  The signs of
+  $(f_0(+\infty),\dots,f_n(+\infty)) = (++\dots ++)$.
+  These two imply $(f_0(-\infty),\dots,f_n(-\infty)) = (\dots \pm \mp)$.
+  \iem
+  (Proposition 1.2.14, Descartes's Lemma):
+  \begin{itemize}
+    \item $R$: real closed field
+    \item $f=a_n X^n + \dots + a_k X^k \in R[X]$ with $a_n a_k \neq 0$
+  \end{itemize}
+  then
+  \begin{align}
+    \# \set{x \in \openboth{0,+\infty}; f(x)=0} \le \SC(a_n,\dots,a_k).
+  \end{align}
+  \item
+  \pf
+  \begin{enumerate}
+    \item 
+  \end{enumerate}
 \end{itemize}
 
 \end{document}

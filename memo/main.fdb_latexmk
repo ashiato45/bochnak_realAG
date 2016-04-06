@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1458610458 "main.tex" "main.pdf" "main" 1458610463
+["pdflatex"] 1459960434 "main.tex" "main.pdf" "main" 1459960440
   "C:/Users/tak/.texlive2014/texmf-var/luatexja/ltj-cid-auto-adobe-japan1.luc" 1426154369 1649592 0317259f471e6b1354f80a1f10f5cc52 ""
   "C:/Users/tak/.texlive2014/texmf-var/luatexja/ltj-jisx0208.luc" 1426154370 201428 86fe11785abbeb6a87b6c8dee36b92ec ""
-  "ashiato45.sty" 1458567179 7577 62c22ba548f299f085ae52ebcf9ffce1 ""
+  "ashiato45.sty" 1459943366 7643 9672b896dd45922c3cd499a59bb2aa03 ""
   "c:/texlive/2014/texmf-dist/fonts/tfm/ptex/ascgrp/ascgrp.tfm" 1410977035 448 9a1f3a95c3a7e2681aa6eefcf410b7ac ""
   "c:/texlive/2014/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1410962984 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2014/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1410962984 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,6 +58,7 @@
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb" 1410962985 24393 3b7eb51a67a0a62aec5849271bdb9c2e ""
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1410962986 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1410962986 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
+  "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1410962986 32587 65067f817f408bc71a7312f3d9828a9b ""
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1410962986 32716 08e384dc442464e7285e891af9f45947 ""
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1410962986 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
   "c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb" 1410962986 30457 bc0868ebece724ed7c3d37e3d9bff7bd ""
@@ -269,13 +270,13 @@
   "c:/texlive/2014/texmf-dist/tex/platex/base/ascmac.sty" 1410977038 20 10f4cf8513664bb881c9d65607787817 ""
   "c:/texlive/2014/texmf-dist/tex/platex/base/tascmac.sty" 1410977038 7559 d5501d5a4108bee88fae069c40104877 ""
   "c:/texlive/2014/texmf-var/web2c/luatex/lualatex.fmt" 1410980417 676272 9d211289b7e73212e8e19ef2358636b0 ""
-  "main.aux" 1458610462 438 54fbb2d5fde0c44058748ff19eabd566 ""
-  "main.tex" 1458610457 41733 c88ca670f3633b824f774e828791a69e ""
+  "main.aux" 1459960439 438 54fbb2d5fde0c44058748ff19eabd566 ""
+  "main.tex" 1459960431 53544 3adfeef77a741b87e1a964c67a5f8f8f ""
   "mytheorems.sty" 1443536323 3229 26548e9fb28f4f196f012a897019a489 ""
   "tikzlibrarycd.code.tex" 1414690712 22926 7a5ee454116bdf5b06ac86f5083f800b ""
   (generated)
+  "main.log"
+  "main.pdf"
   "main.thm"
   "main.aux"
   "C:/texlive/2014/texmf-var/m_t_x_t_e_s_t.tmp"
-  "main.log"
-  "main.pdf"
