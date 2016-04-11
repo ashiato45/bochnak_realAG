@@ -927,7 +927,7 @@
         \end{enumerate}
         \item
         By (b) and (c), $-1 \notin \sum F^2$.
-        \ite
+        \item
         By Theorem 1.1.8, $F$ is real.
       \end{enumerate}
       \item
@@ -1348,7 +1348,6 @@
             (g(c),f'(c_-),f'(c_+)) =
             (+++), (++-), (+-+), (+--), (-++), (-+-), (--+), (---).
           \end{align}
-          \ie
           \item
           In every case as $x$ passes through $c$
           \footnote{Immediate left $c_-$ and right $c_+$} ,
@@ -1524,7 +1523,7 @@
   $\deg f_i = n - i$.  The signs of
   $(f_0(+\infty),\dots,f_n(+\infty)) = (++\dots ++)$.
   These two imply $(f_0(-\infty),\dots,f_n(-\infty)) = (\dots \pm \mp)$.
-  \iem
+  \item
   (Proposition 1.2.14, Descartes's Lemma):
   \begin{itemize}
     \item $R$: real closed field
@@ -1537,8 +1536,116 @@
   \item
   \pf
   \begin{enumerate}
-    \item 
+    \item
+    Think of $n=1$.
+    \begin{enumerate}
+      \item  $f$ has the form of
+      $f=a_1X + a_0$ or $f=a_1X$.
+      \item If $f=a_1 + a_0$,
+      \begin{itemize}
+        \item $a_1 > 0$ and $a_0 < 0$:$f$ has one positive root.  SC is $1$.
+        \item $a_1 >0 $ and $a_0 > 0$ : $f$ has no positive roots.  SC is $0$.
+        \item $a_1 < 0$ and $a_0 < 0$ : $f$ has no positive roots.  SC is $0$.
+        \item $a_1 < 0$ and $a_0 > 0$ : $f$ has one positive root.  SC is $1$.
+      \end{itemize}
+      OK.
+      \item
+      If $f=a_1 X$,
+      $f$ has no positive roots (it is zero!) and
+      SC is $0$.  OK.
+    \end{enumerate}
+    \item
+    So if $n=1$, OK.
+    \item We prove the statement by induction.  The base case is already proved in (1-2).
+    We assume the case of $n-1$.
+    \item
+    We can assume $X$ does not divide $f$, i.e. $a_0 \neq 0$,
+    because we can divide $X$ as many as possible.
+    The division doesn't change the SC nor positive roots.
+    So $f=a_n X^n + \dots + a_q X^q + a_0$ where
+    $a_n \neq 0,\, a_q \neq 0,\, a_0 \neq 0$.
+    \item
+    $f'=na_n X^{n-1} + \dots + qa_q X^{q-1}$.
+    \item
+    We can apply the hypothesis of induction,
+    \begin{align}
+      \#\set{x\in \openboth{0,+\infty}; f'(x)=0} \le \SC(a_n,\dots, a_q).
+    \end{align}
+    \item
+    Let $c \in R$ be the smallest positive root of $f'$.
+    If it does not exist, let $c = +\infty$.
+    \item
+    By intervalue theorem,
+    \begin{align}
+      \sign a_q = \ub{ \sign \openboth{0,c}}_{\text{intervalue}}
+    \end{align}
+    \item
+    $f(0) = a_0$.
+    \item
+    \begin{itemize}
+      \item The case $f$ has a root in $\openboth{0,c}$:
+        \begin{enumerate}
+          \item Seeing the variation of $f$,
+          $a_q a_0 < 0$ is necessary for the case.
+          \item
+          \begin{align}
+            \SC(a_n,\dots,a_q) + 1 = \SC(a_n,\dots,a_q,a_0).
+          \end{align}
+          \item
+          By Rolle's theorem, there is exactly one root in $\openboth{0,c}$.
+          \pf If any, the property of $c$ in (7) is wrong.
+          \item
+          So by intervalue theorem
+          \begin{align}
+            \# \set{\text{positive roots of $f$}} -1 \le \# \set{\text{positive roots of $f'$}}.
+          \end{align}
+          (for a interval of $f$'s roots, there exist at least one root of $f'$ \footnote{Assume $f$ is not zero.})
+          \item
+          \begin{align}
+            \# \set{\text{positive roots of $f$}}
+            &\descle{d}
+            \# \set{\text{positive roots of $f'$}} + 1\\
+            &\descle{6}
+            \SC(a_n,\dots,a_q) + 1\\
+            &\desceq{b}
+            (\SC(a_n,\dots,a_0)-1) + 1\\
+            &=
+            \SC(a_n,\dots,a_0).
+          \end{align}
+        \end{enumerate}
+      \item Otherwise:
+        \begin{enumerate}
+          \item
+          By assumption, there are no roots in $\openboth{0,c}$.
+          \item
+          So (similar to 10-d)
+          \begin{align}
+            \# \set{\text{positive roots of $f$}} \le
+            \# \set{\text{positive roots of $f'$}}.
+          \end{align}
+          \item
+          \begin{align}
+            \# \set{\text{positive roots of $f$}}
+            &\descle{b}
+            \# \set{\text{positive roots of $f'$}}\\
+            &\descle{6}
+            \SC(a_n,\dots,a_q)\\
+            &\le
+            \SC(a_n,\dots,a_0).
+          \end{align}
+        \end{enumerate}
+    \end{itemize}
+    \item
+    In both cases of (10),
+    \begin{align}
+      \# \set{\text{positive roots of $f$}} \le \SC(a_n,\dots,a_0).
+    \end{align}
   \end{enumerate}
+
 \end{itemize}
+
+
+
+
 
 \end{document}
