@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2016.4.10)  12 APR 2016 01:22
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2016.4.10)  13 APR 2016 11:54
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -55,7 +55,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.080 seconds)
+luaotfload | main : initialization completed in 0.061 seconds)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
@@ -1168,13 +1168,13 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 17329 strings out of 495003
+ 17330 strings out of 495003
  244159,383344 words of node,token memory allocated
- 26983 words of node memory still in use:
+ 26984 words of node memory still in use:
    10 hlist, 2 vlist, 5 rule, 33 glue, 317 kern, 8010 attribute, 1950 glue_spec,
  408 attribute_list, 1 write, 14 user_defined nodes
-   avail lists: 1:7,2:63607,3:739,4:3714,5:541,6:4330,7:889,9:1202,10:211
- 19972 multiletter control sequences out of 65536+600000
+   avail lists: 1:7,2:63607,3:740,4:3713,5:542,6:4330,7:889,9:1202,10:211
+ 19973 multiletter control sequences out of 65536+600000
  136 fonts using 71536599 bytes
  66i,23n,82p,987b,739s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2015/texmf-dist/fonts/truetype/public/ipaex/ipaexm.ttf><</us
@@ -1200,7 +1200,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><</usr/local/texlive/2015/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><</usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy8.pfb><</usr/local/texlive/2015/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (19 pages, 514604 bytes).
+Output written on main.pdf (19 pages, 515342 bytes).
 
 PDF statistics: 165 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams
