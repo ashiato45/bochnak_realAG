@@ -8,4 +8,4 @@
   $dvips = 'dvips %O -z -f %S | convbkmk -u > %D';
   $ps2pdf = 'ps2pdf.exe %O %S %D';
   $pdf_mode = 1;
-  $pdf_previewer = 'open';
+  $pdf_previewer = 'sumatrapdf';
