@@ -1649,18 +1649,51 @@
 \begin{itemize}
   \item (Definition 1.3.1):
 
-  \item (Lemma 1.3.3):
+  \item (Lemma 1.3.3'):
   \begin{itemize}
     \item $(F,\le)$: ordered field
-    \item $R$: algebraic extension of $F$
+    \item $R$: real closure of $F$
     \item $R'$: real closed field containing $F$ and preserving the ordering of $F$
     ($F \hookrightarrow R'$)
     \item $L$: intermediate field between $F$ and $R$.
     ($F \subset L \subset R$, not usually order preserving)
     \item $L_1$: extension of finite degree of $L$
     ($F \subset L \subset L_1 \subset R$)
-    \item $\varPhi \colon L\to R'$
+    \item $\varPhi \colon L\to R'$: order preserving
   \end{itemize}
+  then there exists a homomorphism $\varPhi_1 \colon L_1 \to R'$ extending $\varPhi$.
+  MOREOVER, $\varPhi_1$ is order-preserving.
+  \item
+  \pf
+  \begin{enumerate}
+    \item By primitive element theorem (Yukie Thm. 3.7.1.),
+    there exists $a\in L_1 \setminus L$ such that $L_1 = L(a)$.
+    \item
+    Let $f = \sum_{i=0}^q c_i X^i \in L[X]$ be the $a$'s minimal polynomial.
+    (This means $[L_1:L]=q$.)
+    (The uniqueness of minimal polynomial is Yukie Prop. 3.1.24.)
+    \item
+    $f$ has no multiple roots because $\mathrm{ch} L =0 $.  (Yukie Prop. 3.3.5.)
+    \item
+    By 3, we can assume $a_1 < \dots < a_n$ are roots of $f$ in $R$.
+    \item
+    Set $j$ to be $a_j = a$.
+    \item
+    Pay attention to $v(f,1;+\infty)$ was the sign change of COEFFICIENTS.
+    Let $f_\varPhi = \sum_i \varPhi(c_i)X^i$.
+    \begin{align}
+      n &\desceq{4} \#\set{x\in R; f(x)=0}\\
+      &\desceq{Cor 1.2.12.} v(f,1;-\infty) - v(f,1;+\infty)\\
+      &\desceq{$\varPhi$ pres. ord.}
+      v(f_\varPhi,1;-\infty) - v(f_\varPhi,1;+\infty)\\
+      &\desceq{Cor 1.2.12.}
+      \# \set{x\in R'; f_\varPhi(x)=0}.
+    \end{align}
+    \item
+    $f_\varPhi$ has $n$ roots $b_1 < \dots < b_n \in R'$.
+    \item
+
+  \end{enumerate}
 \end{itemize}
 
 
