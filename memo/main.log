@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  21 APR 2016 01:10
+This is LuaTeX, Version beta-0.79.1 (TeX Live 2014/W32TeX) (rev 4971)  (format=lualatex 2014.9.18)  27 APR 2016 23:20
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -108,7 +108,7 @@ luatexbase-attr: luatexbase.attributes["luaotfload@cursbase"] = 6
 luatexbase-attr: luatexbase.attributes["luaotfload@curscurs"] = 7
 luatexbase-attr: luatexbase.attributes["luaotfload@cursdone"] = 8
 luatexbase-attr: luatexbase.attributes["luaotfload@state"] = 9
-luaotfload | main : fontloader loaded in 0.034 seconds
+luaotfload | main : fontloader loaded in 0.032 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -1045,7 +1045,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...fty )\\ &= v(f_\varPhi ,1;-\infty )-v(f_\vaPhi 
                                                   ,1;+\infty )\\ &= \# \set ...
-l.1863     \end{align}
+l.1864     \end{align}
                     
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1056,7 +1056,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...fty )\\ &= v(f_\varPhi ,1;-\infty )-v(f_\vaPhi 
                                                   ,1;+\infty )\\ &= \# \set ...
-l.1863     \end{align}
+l.1864     \end{align}
                     
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1111,7 +1111,7 @@ sfonts/cm/cmsy7.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy8.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb><<c:/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b>
-Output written on main.pdf (22 pages, 374391 bytes).
+Output written on main.pdf (22 pages, 374102 bytes).
 
 PDF statistics: 204 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

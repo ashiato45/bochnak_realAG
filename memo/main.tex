@@ -1842,11 +1842,12 @@
     \item
     (Uniqueness part):
     Let $\varPhi\colon R\to R'$ satisfies the conditions.
-    \item
-    Because $R$ is an algebraic extension of $F$,
-    $[R:F] < \infty$ (Yukie 3.1.18).
-    By primitive element theorem, there exists $a\in R\setminus L$ such that
-    $R = F(a)$.
+    \item Let $a\in R \setminus F$.
+    % \item ???
+    % Because $R$ is an algebraic extension of $F$,
+    % $[R:F] < \infty$ (Yukie 3.1.18).
+    % By primitive element theorem, there exists $a\in R\setminus L$ such that
+    % $R = F(a)$.
     \item
     Let $f = \sum_{i=0}^q c_i X^i \in F[X]$ be a minimal polynomial of $a$.
     \item
@@ -1855,7 +1856,7 @@
     By the corollary of Strum theorem (Cor. 1.2.12),
     \begin{align}
       n &= \# \set{x\in R; f(x)=0}\\
-      & = v(f,1;-infty)-v(f,1;+\infty)\\
+      & = v(f,1;-\infty)-v(f,1;+\infty)\\
       &=
       v(f_\varPhi,1;-\infty)-v(f_\vaPhi,1;+\infty)\\
       &=
@@ -1874,8 +1875,7 @@
     \item
     By (13,14,15), $b_i = \varPhi(a_i)$.
     \item
-    This determines where the basis $a_\bullet$ goes to as
-    $b_\bullet$, and the behaviour of $\varPhi$.
+    This determines where $a$ goes to, that is $b_j$.
     Uniquness is proved.
   \end{enumerate}
   \item (Theorem 1.3.2):
@@ -1956,6 +1956,8 @@
       By uniqueness, $\varPhi'\circ \varPhi = \Id_R$, $\varPhi \circ \varPhi' = \Id_{R'}$.
     \end{enumerate}
   \end{enumerate}
+
+
 
 
 
